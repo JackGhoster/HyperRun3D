@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: GameAssets
+  m_EditorClassIdentifier: 
+  m_GroupName: GameAssets
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 67bcb9c12888d5a2699bcfe2d9d3347a
+  m_SerializeEntries:
+  - m_GUID: 45972cd9c6179ea9796b7e3f183a5798
+    m_Address: Assets/Prefabs/Blocks
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Floor
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 494c147dfecaa50df80d25fc28024558, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 53c6526b1276aad2e87a5e547e01ea98, type: 2}
+    - {fileID: 11400000, guid: 6319b4582bc323c3085b95c1b9f7d4a4, type: 2}

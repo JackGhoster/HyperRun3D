@@ -12,26 +12,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e28cb4e14ca5a21692d7afb70688526, type: 3}
   m_Name: FloorConfig
   m_EditorClassIdentifier: 
-  <GenerateCount>k__BackingField: 10
+  <StartingSafeFloorsCount>k__BackingField: 3
+  <GenerateCount>k__BackingField: 50
   <FloorDatas>k__BackingField:
   - floorType: 1
     length: 8
     isDangerous: 0
+    assetRef:
+      m_AssetGUID: 0afc8d2ad6d71b29dbd9a6c7b5b18e62
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   - floorType: 2
     length: 4
     isDangerous: 1
+    assetRef:
+      m_AssetGUID: 707f7bebbfee9fa6385f802f124e8dc4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   - floorType: 3
     length: 8
     isDangerous: 1
+    assetRef:
+      m_AssetGUID: eec63f5fdd192c0838f6585f2d33521a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   - floorType: 4
     length: 8
     isDangerous: 1
+    assetRef:
+      m_AssetGUID: c25844d1e717c5d1c8f07692121cae9b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   - floorType: 5
     length: 8
     isDangerous: 1
+    assetRef:
+      m_AssetGUID: 483d6069c3fe7f7e89e5bd409fca726e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   - floorType: 6
     length: 8
     isDangerous: 0
+    assetRef:
+      m_AssetGUID: 5ca84f16ecea6e94a814adf8c2eb90d9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   - floorType: 7
     length: 8
     isDangerous: 0
+    assetRef:
+      m_AssetGUID: fc59be633cdb5e4198da3334090fff01
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - floorType: 8
+    length: 8
+    isDangerous: 0
+    assetRef:
+      m_AssetGUID: 720afa621ef4c5e10894eefbd2bc8af9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

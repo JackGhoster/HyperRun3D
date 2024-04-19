@@ -9,6 +9,7 @@ namespace Game.Floor
         Fence,
         Saw,
         Left,
-        Right
+        Right,
+        Win
     }
 }
