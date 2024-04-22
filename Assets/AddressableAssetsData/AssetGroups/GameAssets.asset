@@ -22,6 +22,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Floor
+  - m_GUID: d47efad2ad9af48328eebfb3f3e00a7a
+    m_Address: Assets/Prefabs/Player
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Characters
+  - m_GUID: 93ff1d274600b64e18c4ba23094061ed
+    m_Address: Assets/Prefabs/Effects/Boosters
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Boosters
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 494c147dfecaa50df80d25fc28024558, type: 2}
   m_SchemaSet:

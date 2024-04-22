@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <FloorType>k__BackingField: 5
+  <EndPoint>k__BackingField: {fileID: 0}
 --- !u!65 &-7948264608189728984
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5558837194554467753}
   - component: {fileID: 5558837194554467734}
+  - component: {fileID: 5752023509935022046}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -106,6 +108,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &5752023509935022046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558837194554467752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f5fdf4837b385f5b531fed17efc75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 2a6a429cbf1c1f0d488f2e73b500b614, type: 2}
 --- !u!1001 &5558837193190981051
 PrefabInstance:
   m_ObjectHideFlags: 0

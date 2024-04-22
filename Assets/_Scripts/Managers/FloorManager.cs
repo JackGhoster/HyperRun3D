@@ -14,9 +14,9 @@ namespace Managers
         [field: SerializeField] public FloorConfig FloorConfig { get; private set; }
 
         public List<Floor> GeneratedFloors { get; private set; } = new List<Floor>();
+        public AssetManager AssetManager => GameManager.Instance.AssetManager;
 
-        public Dictionary<AssetReference, GameObject> PreloadedAssets { get; } =
-            new Dictionary<AssetReference, GameObject>();
+        public bool FinishedGenerating { get; private set; } = false;
 
 
         public IEnumerator Init()
@@ -34,14 +34,18 @@ namespace Managers
 
             foreach (var assetRef in assetRefs)
             {
-                yield return HandleAssetLoading(assetRef);
+                yield return AssetManager.HandleAssetLoading(assetRef);
             }
         }
 
         public IEnumerator GenerateFloors()
         {
+            FinishedGenerating = false;
+            
             yield return GenerateSafeFloors();
             yield return GenerateRestFloors();
+
+            FinishedGenerating = true;
         }
 
         private IEnumerator GenerateSafeFloors()
@@ -51,9 +55,9 @@ namespace Managers
             {
                 var floorAsset = FloorConfig.GetDefaultFloorAsset();
 
-                if (!PreloadedAssets.TryGetValue(floorAsset, out var go))
+                if (!AssetManager.PreloadedAssets.TryGetValue(floorAsset, out var go))
                 {
-                    yield return HandleAssetLoading(floorAsset);
+                    yield return AssetManager.HandleAssetLoading(floorAsset);
                 }
 
                 InstantiateFloor(go);
@@ -75,9 +79,9 @@ namespace Managers
                     ? FloorConfig.GetDefaultFloorAsset()
                     : FloorConfig.GetRandomFloorData();
 
-                if (!PreloadedAssets.TryGetValue(floorAsset, out var go))
+                if (!AssetManager.PreloadedAssets.TryGetValue(floorAsset, out var go))
                 {
-                    yield return HandleAssetLoading(floorAsset);
+                    yield return AssetManager.HandleAssetLoading(floorAsset);
                 }
 
                 InstantiateFloor(go);
@@ -88,29 +92,13 @@ namespace Managers
             yield return new WaitUntil(() => finished);
 
             var winAsset = FloorConfig.GetWinFloorAsset();
-            if (!PreloadedAssets.TryGetValue(winAsset, out var winGo))
+            if (!AssetManager.PreloadedAssets.TryGetValue(winAsset, out var winGo))
             {
-                yield return HandleAssetLoading(winAsset);
+                yield return AssetManager.HandleAssetLoading(winAsset);
             }
 
             InstantiateFloor(winGo);
 
-        }
-
-        private IEnumerator HandleAssetLoading(AssetReferenceGameObject assetRef)
-        {
-            var op = assetRef.LoadAssetAsync();
-
-            yield return op;
-
-            if (op.Status == AsyncOperationStatus.Succeeded)
-            {
-                PreloadedAssets.Add(assetRef, op.Result);
-            }
-            else
-            {
-                print($"Error while loading asset: {assetRef.Asset.name}");
-            }
         }
 
         private void InstantiateFloor(GameObject floorGO)
@@ -118,6 +106,11 @@ namespace Managers
             var floor = Instantiate(floorGO, Vector3.zero, Quaternion.identity).GetComponent<Floor>();
             RepositionFloor(floor);
             GeneratedFloors.Add(floor);
+            floor.SetIndex((uint)GeneratedFloors.Count - 1);
+            
+            var effectManager = GameManager.Instance.EffectManager;
+            if(floor.FloorIndex > FloorConfig.StartingSafeFloorsCount - 1) 
+                effectManager.StartCoroutine(effectManager.TryToSpawnEffect(floor));
         }
 
         private void RepositionFloor(Floor floor)
@@ -141,5 +134,53 @@ namespace Managers
             floor.gameObject.transform.rotation = rotation;
         }
 
+
+        public void SetFailedToCurrentFloor()
+        {
+            var curr = GetCurrentFloor();
+            if(curr != null) curr.FailedToPass = true;
+        }
+
+        public Floor GetCurrentFloor()
+        {
+           return GeneratedFloors.Find((floor) => floor.FloorIndex == GameManager.Instance.PlayerManager.CurrentFloorIndex);
+        }
+
+        public Floor GetNextFloor()
+        {
+            var floorIndex = GameManager.Instance.PlayerManager.CurrentFloorIndex + 1;
+            if (floorIndex == GeneratedFloors.Count) return GeneratedFloors.LastOrDefault();
+            return GeneratedFloors.Find((floor) =>
+                floor.FloorIndex == floorIndex);
+        }
+
+
+        public List<Floor> GetDangerousFloors()
+        {
+            List<Floor> floors = GeneratedFloors.FindAll((floor) => FloorConfig.IsDangerous(floor.FloorType)).ToList();
+
+            return floors;
+        }
+
+        public List<FloorType> GetDangerousFloorTypes() => FloorConfig.GetDangerousTypes();
+
+        public int GetCountOfFailedByType(FloorType type)
+        {
+            List<Floor> floors = GeneratedFloors.FindAll((floor) => floor.FloorType == type && floor.FailedToPass).ToList();
+
+            return floors.Count;
+        }
+
+        public int GetCountOfPassedByType(FloorType type)
+        {
+            List<Floor> floors = GeneratedFloors.FindAll((floor) =>
+                    floor.FloorType == type &&
+                    !floor.FailedToPass &&
+                    floor.FloorIndex <= GameManager.Instance.PlayerManager.CurrentFloorIndex).ToList();
+               
+
+            return floors.Count;
+        }
+        
     }
 }

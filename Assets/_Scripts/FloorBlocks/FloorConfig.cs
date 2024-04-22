@@ -74,6 +74,19 @@ namespace Game.Floor
             return false;
         }
 
+        public List<FloorType> GetDangerousTypes()
+        {
+            var dangerousTypes = new List<FloorType>();
+            
+            foreach (var floorData in FloorDatas)
+            {
+                if(floorData.isDangerous) dangerousTypes.Add(floorData.floorType);
+                
+            }
+
+            return dangerousTypes;
+        }
+
         public bool IsTurn(FloorType floorType)
         {
             if (TryGetFloorBy(floorType, out var floorData))

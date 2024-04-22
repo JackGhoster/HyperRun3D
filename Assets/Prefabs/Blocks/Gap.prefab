@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <FloorType>k__BackingField: 2
+  <EndPoint>k__BackingField: {fileID: 0}
 --- !u!65 &-3049142443522283725
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68,6 +69,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2174124678586403759}
+  - component: {fileID: 1318293708886863842}
+  - component: {fileID: 7905378024280408919}
   m_Layer: 0
   m_Name: GapDamageDealer
   m_TagString: Untagged
@@ -89,3 +92,29 @@ Transform:
   m_Father: {fileID: 5638460416417886160}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1318293708886863842
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8660123506700663457}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.5, z: 3}
+  m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &7905378024280408919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8660123506700663457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f5fdf4837b385f5b531fed17efc75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 2a6a429cbf1c1f0d488f2e73b500b614, type: 2}

@@ -82,6 +82,8 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Floor
+    - Characters
+    - Boosters
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 8b64f2a198957770b9d0d117a5c1a746, type: 2}

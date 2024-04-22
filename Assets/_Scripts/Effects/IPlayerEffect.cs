@@ -1,7 +1,9 @@
+using PlayerLogic;
+
 namespace Game
 {
     public interface IPlayerEffect
     {
-        void ApplyEffect();
+        void ApplyEffect(Player player);
     }
 }

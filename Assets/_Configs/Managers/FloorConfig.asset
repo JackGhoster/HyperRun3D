@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FloorConfig
   m_EditorClassIdentifier: 
   <StartingSafeFloorsCount>k__BackingField: 3
-  <GenerateCount>k__BackingField: 50
+  <GenerateCount>k__BackingField: 15
   <FloorDatas>k__BackingField:
   - floorType: 1
     length: 8
