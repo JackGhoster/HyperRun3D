@@ -90,7 +90,7 @@ namespace PlayerLogic
             var nextFloor = GameManager.Instance.FloorManager.GetNextFloor();
             this.gameObject.transform.DOMove(nextFloor.transform.position + Vector3.up, 0.1f);
             PlayerMovement.StartMovement();
-            StartCoroutine(TemporarySpeedChange(0.25f, 2f));
+            StartCoroutine(TemporarySpeedChange(0.5f, 3f));
         }
         
        public IEnumerator TemporarySpeedChange(float speedMod, float time)

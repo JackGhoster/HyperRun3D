@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using Cinemachine;
 using PlayerLogic;
 using UnityEngine;
 
@@ -26,6 +24,7 @@ namespace Managers
             var cam = Camera.main;
 
             cam.transform.rotation = Quaternion.LookRotation(Target.transform.forward, Vector3.up);
+            cam.transform.rotation = Quaternion.Euler(cam.transform.rotation.eulerAngles + _cameraConfig.Tilt);
             cam.transform.position = Target.transform.position + (-Target.transform.forward * -_cameraConfig.DepthOffset) + (-Target.transform.up * -_cameraConfig.VerticalOffset);
         }
     }

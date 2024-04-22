@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <VerticalOffset>k__BackingField: 4
   <DepthOffset>k__BackingField: -9
+  <Tilt>k__BackingField: {x: -20, y: 0, z: 0}
